@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import "./styles/style.css";
 
 function Nav() {
-  const name = ["U", "N", "T", "I", "T", "L", "E", "D"];
-
   useEffect(() => {
+    const name = ["U", "N", "T", "I", "T", "L", "E", "D"];
     const logo = document.querySelector(".logo");
     setTimeout(() => {
       const type = (letter) => {
@@ -20,7 +19,7 @@ function Nav() {
     setTimeout(() => {
       logo.style.animation = "none";
     }, 5000);
-  }, [name]);
+  }, []);
 
   return (
     <nav>
