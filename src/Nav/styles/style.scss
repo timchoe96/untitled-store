@@ -1,0 +1,65 @@
+@keyframes title {
+  from {
+    border-right: 2px solid black;
+  }
+  to {
+    border-right: 2px solid transparent;
+  }
+}
+
+nav {
+  z-index: 2;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    font-size: 20px;
+    animation: title 800ms infinite;
+    position: absolute;
+    left: calc(50% - 48.26px);
+  }
+
+  ul {
+    font-size: 14px;
+    display: flex;
+    list-style: none;
+    li {
+      margin: 0 80px;
+    }
+  }
+  .filler {
+    width: 94.52px;
+  }
+  .icon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  nav {
+    .icon {
+      display: block;
+      margin: 0 50px;
+    }
+    ul {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    .icon {
+      display: block;
+      margin: 0 20px;
+    }
+    ul {
+      display: none;
+    }
+  }
+}

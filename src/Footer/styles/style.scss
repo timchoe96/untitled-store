@@ -1,0 +1,19 @@
+footer {
+  font-weight: 200;
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 100px 0;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  ul {
+    flex-direction: column;
+    li {
+      margin-bottom: 50px;
+    }
+  }
+}
