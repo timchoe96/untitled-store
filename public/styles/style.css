@@ -5,4 +5,16 @@
           box-sizing: border-box;
   font-family: "Helvetica Neue";
 }
+
+html {
+  height: 100%;
+}
+
+html body {
+  height: 100%;
+}
+
+html body #root {
+  height: 100%;
+}
 /*# sourceMappingURL=style.css.map */

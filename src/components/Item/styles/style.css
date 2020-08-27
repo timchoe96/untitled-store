@@ -1,0 +1,132 @@
+.item {
+  margin-top: 150px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.item img {
+  width: 500px;
+  height: auto;
+}
+
+.item .info h3 {
+  font-weight: 400;
+}
+
+.item .info .description {
+  margin-top: 20px;
+  font-weight: 200;
+  line-height: 1.5;
+}
+
+.item .info .price {
+  margin-top: 20px;
+  font-weight: 200;
+}
+
+.item .info .sizes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.item .info .sizes .size {
+  margin-right: 10px;
+  font-weight: 200;
+  background: none;
+}
+
+.item .info .sizes .size label {
+  border: thin solid black;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.item .info .sizes .size input {
+  display: none;
+}
+
+.item .info .sizes .size input:checked + label {
+  background: black;
+  color: white;
+}
+
+.item .info button {
+  margin-top: 40px;
+  padding: 8px;
+  background: none;
+  border: thin solid black;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.item .info button:hover {
+  color: white;
+  background: black;
+}
+
+.item .info button:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .item img {
+    margin-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .item img {
+    margin-bottom: 50px;
+    width: 250px;
+  }
+  .item .info {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .item .info .description {
+    width: 90%;
+  }
+  .item .info .sizes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .item .info .sizes .size {
+    margin: 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */

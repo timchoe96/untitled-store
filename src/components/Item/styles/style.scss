@@ -1,0 +1,101 @@
+.item {
+  margin-top: 150px;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  img {
+    width: 500px;
+    height: auto;
+    // align-self: center;
+  }
+  .info {
+    h3 {
+      font-weight: 400;
+    }
+    .description {
+      margin-top: 20px;
+      font-weight: 200;
+      line-height: 1.5;
+    }
+    .price {
+      margin-top: 20px;
+      font-weight: 200;
+    }
+    .sizes {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      .size {
+        margin-right: 10px;
+        font-weight: 200;
+        background: none;
+        label {
+          border: thin solid black;
+          padding: 8px;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+          &:checked + label {
+            background: black;
+            color: white;
+          }
+        }
+      }
+    }
+    button {
+      margin-top: 40px;
+      padding: 8px;
+      background: none;
+      border: thin solid black;
+      font-weight: 200;
+      cursor: pointer;
+      &:hover {
+        color: white;
+        background: black;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .item {
+    flex-direction: column;
+    align-items: center;
+    img {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .item {
+    img {
+      margin-bottom: 50px;
+      width: 250px;
+    }
+    .info {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .description {
+        width: 90%;
+      }
+      .sizes {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        flex-wrap: wrap;
+        .size {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

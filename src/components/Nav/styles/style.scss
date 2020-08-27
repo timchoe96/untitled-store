@@ -1,0 +1,106 @@
+@keyframes title {
+  from {
+    border-right: 2px solid black;
+  }
+  to {
+    border-right: 2px solid transparent;
+  }
+}
+
+nav {
+  z-index: 2;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    font-size: 20px;
+    animation: title 800ms infinite;
+    position: absolute;
+    left: calc(50% - 48.26px);
+    top: calc(50% - 12px);
+  }
+
+  ul {
+    font-size: 14px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    li {
+      cursor: pointer;
+      width: 120px;
+      text-align: center;
+      margin: 0 40px;
+    }
+    .shopList {
+      position: relative;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .dropDown {
+        font-weight: 200;
+        display: flex;
+        justify-content: space-evenly;
+        position: absolute;
+        width: 100vw;
+        height: 80px;
+        background: white;
+        left: -80px;
+        opacity: 0;
+        top: 80px;
+        border-top: thin black solid;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: all 0.5s ease;
+        align-items: center;
+        ul {
+          &:hover {
+            color: rgb(103, 103, 103);
+          }
+        }
+      }
+      &:hover .dropDown {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  .filler {
+    width: 94.52px;
+  }
+  .icon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  nav {
+    .icon {
+      display: block;
+      margin: 0 50px;
+    }
+    ul {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    .icon {
+      display: block;
+      margin: 0 20px;
+    }
+    ul {
+      display: none;
+    }
+  }
+}

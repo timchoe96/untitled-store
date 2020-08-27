@@ -1,0 +1,143 @@
+@-webkit-keyframes title {
+  from {
+    border-right: 2px solid black;
+  }
+  to {
+    border-right: 2px solid transparent;
+  }
+}
+
+@keyframes title {
+  from {
+    border-right: 2px solid black;
+  }
+  to {
+    border-right: 2px solid transparent;
+  }
+}
+
+nav {
+  z-index: 2;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .logo {
+  font-size: 20px;
+  -webkit-animation: title 800ms infinite;
+          animation: title 800ms infinite;
+  position: absolute;
+  left: calc(50% - 48.26px);
+  top: calc(50% - 12px);
+}
+
+nav ul {
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav ul li {
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+  margin: 0 40px;
+}
+
+nav ul .shopList {
+  position: relative;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+nav ul .shopList .dropDown {
+  font-weight: 200;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  position: absolute;
+  width: 100vw;
+  height: 80px;
+  background: white;
+  left: -80px;
+  opacity: 0;
+  top: 80px;
+  border-top: thin black solid;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  pointer-events: none;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav ul .shopList .dropDown ul:hover {
+  color: #676767;
+}
+
+nav ul .shopList:hover .dropDown {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+nav .filler {
+  width: 94.52px;
+}
+
+nav .icon {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  nav .icon {
+    display: block;
+    margin: 0 50px;
+  }
+  nav ul {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav .icon {
+    display: block;
+    margin: 0 20px;
+  }
+  nav ul {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */

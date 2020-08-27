@@ -19,3 +19,11 @@ export const fetchItems = () => (dispatch) => {
       dispatch({ type: "REQUEST_ITEMS_FAILED", payload: error })
     );
 };
+
+export const mobileMenu = (position) => {
+  return { type: "MENU_CLICK", payload: position };
+};
+
+export const shopMenu = (height) => {
+  return { type: "PLUS_CLICK", payload: height };
+};

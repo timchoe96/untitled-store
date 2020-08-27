@@ -1,0 +1,41 @@
+.shop {
+  .routerHistory {
+    margin-top: 120px;
+    margin-left: 80px;
+    display: flex;
+    font-weight: 200;
+    .backHome {
+      margin-right: 8px;
+    }
+  }
+  .shopContainer {
+    margin-top: 50px;
+    align-items: center;
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 100px 50px;
+    justify-items: center;
+    padding: 0 50px;
+    .imageContainer {
+      text-align: center;
+      img {
+        height: auto;
+        width: 100%;
+      }
+      .imageLabel {
+        font-size: 14px;
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .shop {
+    .shopContainer {
+      padding: 0 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+}

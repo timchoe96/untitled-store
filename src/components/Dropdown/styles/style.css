@@ -1,0 +1,68 @@
+.positionHolder {
+  position: fixed;
+  z-index: 420;
+  top: 0;
+  height: 1%;
+  width: 100vw;
+}
+
+.positionHolder .mobileMenu {
+  overflow: scroll;
+  color: white;
+  position: absolute;
+  top: 0;
+  z-index: 40;
+  height: calc(100% * 100);
+  width: 100%;
+  background-color: black;
+  -webkit-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
+.positionHolder .mobileMenu h3 {
+  width: 80px;
+  margin: 50px 0;
+  margin-left: auto;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.positionHolder .mobileMenu ul {
+  margin-top: 100px;
+}
+
+.positionHolder .mobileMenu ul li {
+  font-size: 20px;
+  margin-bottom: 50px;
+  padding: 0 50px;
+}
+
+.positionHolder .mobileMenu ul li:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.positionHolder .mobileMenu ul .shopDropdown {
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  overflow: hidden;
+  font-weight: 200;
+  margin-top: 0;
+}
+
+.positionHolder .mobileMenu ul .shopDropdown li {
+  margin: 20px 0;
+}
+
+.positionHolder .mobileMenu ul .shopDropdown li:nth-child(1) {
+  margin-top: 0;
+}
+
+.positionHolder .mobileMenu ul .shopDropdown li:nth-child(4) {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=style.css.map */
