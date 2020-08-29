@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica !important;
+}
+
+html {
+  font-family: "Helvetica Neue", Helvetica;
+  height: 100%;
+}
+
+html body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+}
+
+html body #root {
+  height: 100%;
+}
+/*# sourceMappingURL=style.css.map */

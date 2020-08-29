@@ -1,0 +1,110 @@
+.login {
+  font-weight: 200;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 100px;
+}
+
+.login .header {
+  font-weight: 400;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: thin solid black;
+}
+
+.login button {
+  height: 30px;
+  width: 100%;
+  color: white;
+  background: black;
+  border: thin solid black;
+}
+
+.login input {
+  display: block;
+  width: 100%;
+  border: thin solid black;
+  border-radius: none;
+  height: 30px;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  font-weight: 200;
+}
+
+.login input::-webkit-input-placeholder {
+  font-weight: 200;
+}
+
+.login input:-ms-input-placeholder {
+  font-weight: 200;
+}
+
+.login input::-ms-input-placeholder {
+  font-weight: 200;
+}
+
+.login input::placeholder {
+  font-weight: 200;
+}
+
+.login .register {
+  margin: 50px 0;
+  width: 400px;
+}
+
+.login .register p {
+  margin-top: 30px;
+  line-height: 1.5;
+  margin-bottom: 72px;
+}
+
+.login .signIn {
+  margin: 30px 0;
+  width: 400px;
+}
+
+.login .signIn form {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .login {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .login .register {
+    width: 100%;
+    padding: 0 50px;
+  }
+  .login .signIn {
+    width: 100%;
+    padding: 0 50px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .login {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .login .register {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .login .signIn {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

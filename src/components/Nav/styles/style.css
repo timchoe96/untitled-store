@@ -54,6 +54,19 @@ nav ul {
           align-items: center;
 }
 
+nav ul #cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav ul #cart div:nth-child(1) {
+  margin-right: 10px;
+}
+
 nav ul li {
   cursor: pointer;
   width: 120px;
@@ -78,17 +91,9 @@ nav ul .shopList {
 
 nav ul .shopList .dropDown {
   font-weight: 200;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   position: absolute;
-  width: 100vw;
-  height: 80px;
   background: white;
-  left: -80px;
+  padding: 10px;
   opacity: 0;
   top: 80px;
   border-top: thin black solid;
@@ -97,9 +102,11 @@ nav ul .shopList .dropDown {
   pointer-events: none;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+nav ul .shopList .dropDown ul {
+  font-size: 16px;
+  margin: 20px 0;
 }
 
 nav ul .shopList .dropDown ul:hover {

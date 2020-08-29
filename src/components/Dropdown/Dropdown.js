@@ -2,6 +2,7 @@ import React from "react";
 import { mobileMenu } from "../../actions/index.js";
 import { shopMenu } from "../../actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import "./styles/style.css";
 
 function Dropdown() {
@@ -20,7 +21,9 @@ function Dropdown() {
         </h3>
         <ul>
           <li>
-            <div> SHOP</div>
+            <Link to="/Shop" style={{ textDecoration: "none", color: "white" }}>
+              <div onClick={() => clickClose()}> SHOP</div>
+            </Link>
             {height === "0" ? (
               <i
                 style={{ cursor: "pointer" }}
@@ -38,10 +41,27 @@ function Dropdown() {
             )}
           </li>
           <ul className="shopDropdown" style={{ height: height }}>
-            <li>Tops</li>
-            <li>Bottom</li>
-            <li>Accessories</li>
-            <li>Home goods</li>
+            <Link to="/Tops" style={{ textDecoration: "none", color: "white" }}>
+              <li onClick={() => clickClose()}>Tops</li>
+            </Link>
+            <Link
+              to="/Bottoms"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <li onClick={() => clickClose()}>Bottoms</li>
+            </Link>
+            <Link
+              to="/Accessories"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <li onClick={() => clickClose()}>Accessories</li>
+            </Link>
+            <Link
+              to="/Homegoods"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <li onClick={() => clickClose()}>Home goods</li>
+            </Link>
           </ul>
           <li>ABOUT</li>
           <li>LOGIN</li>

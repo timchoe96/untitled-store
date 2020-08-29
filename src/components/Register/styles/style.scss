@@ -1,0 +1,50 @@
+.createAccount {
+  margin-bottom: 100px;
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .registerWrapper {
+    h1 {
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 14px;
+      margin-top: 20px;
+      font-weight: 200;
+    }
+    input {
+      border-radius: none;
+      border: thin solid black;
+      padding-left: 10px;
+      display: block;
+      font-weight: 200;
+      margin-bottom: 30px;
+      width: 400px;
+      height: 30px;
+      &::placeholder {
+        font-weight: 200;
+      }
+    }
+    button {
+      width: 400px;
+      height: 30px;
+      background: black;
+      color: white;
+      border: thin solid black;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .createAccount {
+    .registerWrapper {
+      input {
+        width: 90vw;
+      }
+      button {
+        width: 90vw;
+      }
+    }
+  }
+}

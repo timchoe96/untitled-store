@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/style.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setItem } from "../../actions/index.js";
 
 function Item({ match }) {
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.items);
+
   let id = match.params.id;
-  //   console.log(items.items.filter((item) => item.productName.includes(id)));
+  const [click, setClick] = useState("Choose a size");
 
   let object;
 
   if (!items.isPending) {
     object = items.items.filter((item) => item.productName.includes(id))[0];
   }
+
+  const sizeClick = () => {
+    setClick("Add to cart");
+  };
+
+  const addCartList = () => {
+    let nl = document.querySelectorAll("input");
+    let chosenSize = Array.prototype.slice
+      .call(nl)
+      .filter((input) => input.checked);
+    let returnedSize = object.hasOwnProperty("sizes")
+      ? chosenSize[0].value
+      : "One size";
+
+    dispatch(
+      setItem({
+        name: object.productName,
+        price: object.price,
+        size: returnedSize,
+        image: object.image[0].fields.file.url,
+      })
+    );
+  };
 
   return (
     !items.isPending && (
@@ -25,12 +51,26 @@ function Item({ match }) {
             {object.hasOwnProperty("sizes") &&
               object.sizes.map((size, i) => (
                 <div className="size" key={i}>
-                  <input type="radio" id={size} name="size" value={size} />
+                  <input
+                    onClick={() => sizeClick()}
+                    type="radio"
+                    id={size}
+                    name="size"
+                    value={size}
+                  />
                   <label htmlFor={size}> {size}</label>
                 </div>
               ))}
           </form>
-          <button>ADD TO CART</button>
+          <button
+            onClick={() =>
+              document.getElementById("addToCart").innerHTML ===
+                "Add to cart" && addCartList()
+            }
+            id="addToCart"
+          >
+            {object.hasOwnProperty("sizes") ? click : "Add to cart"}
+          </button>
         </div>
       </div>
     )

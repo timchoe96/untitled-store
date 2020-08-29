@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 function Home() {
   const items = useSelector((state) => state.items);
 
-  console.log(items);
-
   return (
     <div className="home">
       {/* video */}

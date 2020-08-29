@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import "./styles/style.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { mobileMenu } from "../../actions/index.js";
 
 function Nav() {
+  const cart = useSelector((state) => state.itemList);
   const dispatch = useDispatch();
   useEffect(() => {
     const name = ["U", "N", "T", "I", "T", "L", "E", "D"];
@@ -74,8 +75,13 @@ function Nav() {
         <div className="logo"></div>
       </Link>
       <ul>
-        <li>LOGIN</li>
-        <li>CART</li>
+        <Link to="/Login" style={{ textDecoration: "none", color: "black" }}>
+          <li>LOGIN</li>
+        </Link>
+        <li id="cart">
+          <div>CART</div>
+          <div>{`( ${cart.length} )`}</div>
+        </li>
       </ul>
       <i
         style={{ cursor: "pointer" }}

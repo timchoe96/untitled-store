@@ -27,3 +27,7 @@ export const mobileMenu = (position) => {
 export const shopMenu = (height) => {
   return { type: "PLUS_CLICK", payload: height };
 };
+
+export const setItem = (item) => {
+  return { type: "ADD_ITEM", payload: item };
+};
