@@ -3,9 +3,14 @@ import "./styles/style.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileMenu } from "../../actions/index.js";
+import { auth } from "../../firebase.js";
+import { cartStyles } from "../../actions/index.js";
 
 function Nav() {
   const cart = useSelector((state) => state.itemList);
+  const userCart = useSelector((state) => state.itemListUser);
+  const user = useSelector((state) => state.activeUser);
+
   const dispatch = useDispatch();
   useEffect(() => {
     const name = ["U", "N", "T", "I", "T", "L", "E", "D"];
@@ -28,6 +33,21 @@ function Nav() {
 
   const clickOpen = () => {
     dispatch(mobileMenu({ left: "0", overflow: "hidden" }));
+    document.getElementsByTagName("html")[0].style.overflow = "hidden";
+  };
+
+  const signOut = () => {
+    auth.signOut();
+  };
+
+  const cartOpen = () => {
+    dispatch(
+      cartStyles({
+        position: "0",
+        background: "rgba(0,0,0,0.5)",
+        pointer: "auto",
+      })
+    );
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
   };
 
@@ -75,19 +95,29 @@ function Nav() {
         <div className="logo"></div>
       </Link>
       <ul>
-        <Link to="/Login" style={{ textDecoration: "none", color: "black" }}>
-          <li>LOGIN</li>
-        </Link>
-        <li id="cart">
+        {user ? (
+          <li onClick={signOut}>LOGOUT</li>
+        ) : (
+          <Link to="/Login" style={{ textDecoration: "none", color: "black" }}>
+            <li>LOGIN</li>
+          </Link>
+        )}
+        <li id="cart" onClick={cartOpen}>
           <div>CART</div>
-          <div>{`( ${cart.length} )`}</div>
+          <div>{user ? `( ${userCart.length} )` : `( ${cart.length} )`}</div>
         </li>
       </ul>
-      <i
-        style={{ cursor: "pointer" }}
-        className="fa fa-shopping-cart icon"
-        aria-hidden="true"
-      ></i>
+      <div className="mobileCart" onClick={cartOpen}>
+        <i
+          id="cartMobile"
+          style={{ cursor: "pointer" }}
+          className="fa fa-shopping-cart icon"
+          aria-hidden="true"
+        ></i>
+        <div className="cartCountMobile">
+          {user ? `( ${userCart.length} )` : `( ${cart.length} )`}
+        </div>
+      </div>
     </nav>
   );
 }

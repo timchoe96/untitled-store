@@ -4,6 +4,7 @@ import { shopMenu } from "../../actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles/style.css";
+import Cart from "../Cart/Cart.js";
 
 function Dropdown() {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ function Dropdown() {
           <li>LOGIN</li>
         </ul>
       </div>
+      <Cart />
     </div>
   );
 }

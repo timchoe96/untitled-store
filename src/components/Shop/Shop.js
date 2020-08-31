@@ -5,7 +5,6 @@ import "./styles/style.css";
 
 function Shop() {
   const items = useSelector((state) => state.items);
-  console.log(items.items);
 
   return (
     <div className="shop">

@@ -8,6 +8,7 @@
       justify-content: space-around;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin-bottom: 150px;
 }
 
 .item img {

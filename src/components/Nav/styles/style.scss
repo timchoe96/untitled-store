@@ -86,13 +86,29 @@ nav {
   .icon {
     display: none;
   }
+  .mobileCart {
+    display: none;
+    font-size: 14px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
   nav {
+    .mobileCart {
+      display: flex;
+      align-items: center;
+      .cartCountMobile {
+        margin-right: 50px;
+      }
+    }
+
     .icon {
       display: block;
       margin: 0 50px;
+    }
+    #cartMobile {
+      margin-left: 50px;
+      margin-right: 10px;
     }
     ul {
       display: none;

@@ -128,10 +128,30 @@ nav .icon {
   display: none;
 }
 
+nav .mobileCart {
+  display: none;
+  font-size: 14px;
+}
+
 @media only screen and (max-width: 1024px) {
+  nav .mobileCart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  nav .mobileCart .cartCountMobile {
+    margin-right: 50px;
+  }
   nav .icon {
     display: block;
     margin: 0 50px;
+  }
+  nav #cartMobile {
+    margin-left: 50px;
+    margin-right: 10px;
   }
   nav ul {
     display: none;

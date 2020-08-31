@@ -16,14 +16,37 @@ import Accessories from "../Accessories/Accessories.js";
 import Homegoods from "../Homegoods/Homegoods.js";
 import Login from "../Login/Login.js";
 import Register from "../Register/Register.js";
+import { auth, db } from "../../firebase.js";
+import { setUser } from "../../actions/index.js";
+import { setUserItem } from "../../actions/index.js";
 
 function App() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.itemList);
+  const user = useSelector((state) => state.activeUser);
+  const list = useSelector((state) => state.itemListUser);
+
   useEffect(() => {
     dispatch(fetchItems());
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [dispatch, cart]);
+    const unsubsribe = auth.onAuthStateChanged((authUser) => {
+      authUser ? dispatch(setUser(authUser)) : dispatch(setUser(null));
+    });
+
+    return () => {
+      unsubsribe();
+    };
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    user &&
+      db
+        .collection(`timchoe96@gmail.com`)
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) =>
+          dispatch(setUserItem(snapshot.docs.map((doc) => doc.data())))
+        );
+  }, [user, dispatch]);
+
+  console.log(list);
 
   return (
     <Router>

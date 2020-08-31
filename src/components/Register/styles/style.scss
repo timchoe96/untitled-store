@@ -5,8 +5,15 @@
   align-items: center;
   justify-content: center;
   .registerWrapper {
+    position: relative;
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+    }
+    .error {
+      position: absolute;
+      top: 45px;
+      color: red;
+      font-size: 12px;
     }
     p {
       font-size: 14px;

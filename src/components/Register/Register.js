@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import "./styles/style.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
 
 function Register() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
+  const [error, setError] = useState("");
+
+  const register = (event) => {
+    event.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => history.push("/"))
+      .catch((e) => setError(e.message));
+  };
+
   return (
     <div className="createAccount">
       <div className="registerWrapper">
         <h1>REGISTER</h1>
+        <div className="error">{error}</div>
         <form>
           <input
             onChange={(event) => setFirst(event.target.value)}
@@ -35,7 +47,9 @@ function Register() {
             type="password"
             placeholder="Password"
           ></input>
-          <button type="submit">REGISTER ACCOUNT</button>
+          <button onClick={register} type="submit">
+            REGISTER ACCOUNT
+          </button>
         </form>
         <Link to="/Login" style={{ textDecoration: "none", color: "black" }}>
           <p>Back to Login</p>

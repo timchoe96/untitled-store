@@ -1,9 +1,4 @@
-const itemList = (
-  state = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : [],
-  action
-) => {
+const itemList = (state = [], action) => {
   switch (action.type) {
     case "ADD_ITEM":
       return [...state, action.payload];

@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
 import "./styles/style.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Login() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email);
+  const [error, setError] = useState("");
+
+  const login = (event) => {
+    event.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => history.push("/"))
+      .catch((e) => setError(e.message));
+  };
   return (
     <div className="login">
       <div className="register">
@@ -21,6 +30,7 @@ function Login() {
       </div>
       <div className="signIn">
         <div className="header">REGISTERED </div>
+        <div className="error">{error}</div>
         <form>
           <input
             onChange={(event) => setEmail(event.target.value)}
@@ -34,7 +44,9 @@ function Login() {
             value={password}
             type="password"
           ></input>
-          <button type="submit">SIGN IN</button>
+          <button onClick={login} type="submit">
+            SIGN IN
+          </button>
         </form>
       </div>
     </div>

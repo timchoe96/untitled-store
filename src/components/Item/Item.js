@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import "./styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setItem } from "../../actions/index.js";
+import { db } from "../../firebase.js";
+import firebase from "firebase";
 
 function Item({ match }) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.items);
+  const user = useSelector((state) => state.activeUser);
+  // console.log(user);
 
   let id = match.params.id;
   const [click, setClick] = useState("Choose a size");
@@ -20,7 +24,7 @@ function Item({ match }) {
     setClick("Add to cart");
   };
 
-  const addCartList = () => {
+  const addCartListLocal = () => {
     let nl = document.querySelectorAll("input");
     let chosenSize = Array.prototype.slice
       .call(nl)
@@ -37,6 +41,30 @@ function Item({ match }) {
         image: object.image[0].fields.file.url,
       })
     );
+  };
+
+  const addCartListDatabase = () => {
+    let nl = document.querySelectorAll("input");
+    let chosenSize = Array.prototype.slice
+      .call(nl)
+      .filter((input) => input.checked);
+    let returnedSize = object.hasOwnProperty("sizes")
+      ? chosenSize[0].value
+      : "One size";
+
+    db.collection(`${user.email}`).add({
+      name: object.productName,
+      price: object.price,
+      size: returnedSize,
+      image: object.image[0].fields.file.url,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  };
+
+  const buttonClick = () => {
+    document.getElementById("addToCart").innerHTML === "Add to cart" && user
+      ? addCartListDatabase()
+      : addCartListLocal();
   };
 
   return (
@@ -63,9 +91,10 @@ function Item({ match }) {
               ))}
           </form>
           <button
+            type="button"
             onClick={() =>
               document.getElementById("addToCart").innerHTML ===
-                "Add to cart" && addCartList()
+                "Add to cart" && buttonClick()
             }
             id="addToCart"
           >
