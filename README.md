@@ -48,13 +48,17 @@ The cart section shows which items you have selected for checkout. It shows the 
 
 Homepage:
 
-![](images/Home.png)
+![](images/home.png)
 
-Blog: 
+Store: 
 
-![](images/blog.png)
+![](images/store.png)
 
-Images: 
+Login:
 
-![](images/images.png)
+![](images/login.png)
+
+Cart:
+
+![](images/cart.png)
 
