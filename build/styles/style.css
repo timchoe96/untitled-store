@@ -3,11 +3,10 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "Helvetica Neue", Helvetica !important;
+  font-family: "Helvetica Neue";
 }
 
 html {
-  font-family: "Helvetica Neue", Helvetica;
   height: 100%;
 }
 

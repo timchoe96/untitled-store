@@ -89,7 +89,9 @@ function Nav() {
             </Link>
           </div>
         </li>
-        <li>ABOUT</li>
+        <Link to="/About" style={{ textDecoration: "none", color: "black" }}>
+          <li>ABOUT</li>
+        </Link>
       </ul>
       <Link to="/" style={{ textDecoration: "none", color: "black" }}>
         <div className="logo"></div>

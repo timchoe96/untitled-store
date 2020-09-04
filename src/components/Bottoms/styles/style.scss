@@ -21,8 +21,7 @@
     .imageContainer {
       text-align: center;
       img {
-        height: 100%;
-        object-fit: cover;
+        height: auto;
         width: 100%;
       }
       .imageLabel {
@@ -34,9 +33,23 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .bottom {
+  .Bottom {
+    .routerHistory {
+      display: flex;
+      justify-content: center;
+      margin-left: 0;
+    }
     .bottomContainer {
       padding: 0 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .Bottom {
+    .bottomContainer {
+      padding: 0 10px;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
   }

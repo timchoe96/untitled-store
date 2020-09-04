@@ -19,11 +19,12 @@ import Register from "../Register/Register.js";
 import { auth, db } from "../../firebase.js";
 import { setUser } from "../../actions/index.js";
 import { setUserItem } from "../../actions/index.js";
+import About from "../About/About.js";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.activeUser);
-  const list = useSelector((state) => state.itemListUser);
+  // const list = useSelector((state) => state.itemListUser);
 
   useEffect(() => {
     dispatch(fetchItems());
@@ -39,14 +40,16 @@ function App() {
   useEffect(() => {
     user &&
       db
-        .collection(`timchoe96@gmail.com`)
+        .collection(`${user.email}`)
         .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) =>
-          dispatch(setUserItem(snapshot.docs.map((doc) => doc.data())))
+          dispatch(
+            setUserItem(
+              snapshot.docs.map((doc) => ({ id: doc.id, item: doc.data() }))
+            )
+          )
         );
   }, [user, dispatch]);
-
-  console.log(list);
 
   return (
     <Router>
@@ -64,6 +67,7 @@ function App() {
             <Route path="/Homegoods" exact component={Homegoods} />
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
+            <Route path="/About" exact component={About} />
           </Switch>
           <Footer />
           <Dropdown />

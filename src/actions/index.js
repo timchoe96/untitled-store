@@ -32,6 +32,10 @@ export const setItem = (item) => {
   return { type: "ADD_ITEM", payload: item };
 };
 
+export const deleteItem = (item) => {
+  return { type: "DELETE_ITEM", payload: item };
+};
+
 export const setUser = (user) => {
   return {
     type: "SET_USER",
@@ -50,5 +54,19 @@ export const cartStyles = (style) => {
   return {
     type: "SET_STYLE",
     payload: style,
+  };
+};
+
+export const cartTotal = (price) => {
+  return {
+    type: "SET_PRICE",
+    payload: price,
+  };
+};
+
+export const cartTotalData = (price) => {
+  return {
+    type: "SET_PRICE_DATA",
+    payload: price,
   };
 };

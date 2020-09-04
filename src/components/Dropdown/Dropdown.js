@@ -10,10 +10,12 @@ function Dropdown() {
   const dispatch = useDispatch();
   const height = useSelector((state) => state.setHeight);
   const position = useSelector((state) => state.position);
+
   const clickClose = () => {
     dispatch(mobileMenu({ left: "-2000px", overflow: "auto" }));
     document.getElementsByTagName("html")[0].style.overflow = "scroll";
   };
+
   return (
     <div className="positionHolder">
       <div className="mobileMenu" style={{ left: position.left }}>
@@ -64,8 +66,12 @@ function Dropdown() {
               <li onClick={() => clickClose()}>Home goods</li>
             </Link>
           </ul>
-          <li>ABOUT</li>
-          <li>LOGIN</li>
+          <Link to="/About" style={{ textDecoration: "none", color: "white" }}>
+            <li onClick={() => clickClose()}>ABOUT</li>
+          </Link>
+          <Link to="/Login" style={{ textDecoration: "none", color: "white" }}>
+            <li onClick={() => clickClose()}>LOGIN</li>
+          </Link>
         </ul>
       </div>
       <Cart />

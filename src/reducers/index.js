@@ -6,6 +6,8 @@ import itemList from "./itemList.js";
 import itemListUser from "./itemListUser.js";
 import activeUser from "./activeUser.js";
 import cart from "./cart.js";
+import setTotal from "./setTotal.js";
+import setTotalData from "./setTotalData.js";
 
 const rootReducer = combineReducers({
   items,
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   activeUser,
   itemListUser,
   cart,
+  setTotal,
+  setTotalData,
 });
 
 export default rootReducer;

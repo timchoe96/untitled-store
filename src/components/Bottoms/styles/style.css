@@ -35,9 +35,7 @@
 }
 
 .Bottom .bottomContainer .imageContainer img {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: auto;
   width: 100%;
 }
 
@@ -47,8 +45,25 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .bottom .bottomContainer {
+  .Bottom .routerHistory {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-left: 0;
+  }
+  .Bottom .bottomContainer {
     padding: 0 20px;
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .Bottom .bottomContainer {
+    padding: 0 10px;
     -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }

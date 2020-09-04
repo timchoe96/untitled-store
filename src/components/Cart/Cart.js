@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { cartStyles } from "../../actions/index.js";
-import plus from "./images/plus.png";
-import minus from "./images/minus.png";
+// import plus from "./images/plus.png";
+// import minus from "./images/minus.png";
+import { db } from "../../firebase.js";
+import { deleteItem } from "../../actions/index.js";
+import { cartTotal } from "../../actions/index.js";
+import { cartTotalData } from "../../actions/index.js";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -13,6 +17,8 @@ function Cart() {
   const cart = useSelector((state) => state.itemList);
   const userCart = useSelector((state) => state.itemListUser);
   const user = useSelector((state) => state.activeUser);
+  const total = useSelector((state) => state.setTotal);
+  const dataTotal = useSelector((state) => state.setTotalData);
 
   const cartClose = () => {
     dispatch(
@@ -25,7 +31,20 @@ function Cart() {
     document.getElementsByTagName("html")[0].style.overflow = "auto";
   };
 
-  console.log(cart);
+  useEffect(() => {
+    user
+      ? dispatch(
+          cartTotalData(userCart.reduce((acc, val) => acc + val.item.price, 0))
+        )
+      : dispatch(cartTotal(cart.reduce((acc, val) => acc + val.price, 0)));
+  }, [cart, dispatch, user, userCart]);
+
+  const itemDelete = (i) => {
+    let newArray = cart;
+    newArray.splice(i, 1);
+    dispatch(deleteItem(newArray));
+  };
+
   return (
     <div
       className="dimmedBackground"
@@ -36,9 +55,52 @@ function Cart() {
           CLOSE
         </div>
         <h3>Shopping Cart</h3>
-        {user
-          ? userCart.map()
-          : cart.map((item, i) => (
+        <div className="scroll">
+          {user ? (
+            userCart.length === 0 ? (
+              <div style={{ fontWeight: "200", marginTop: "10px" }}>
+                Your cart is currently empty.
+              </div>
+            ) : (
+              userCart.map((item, i) => (
+                <div key={i} className="cartItem">
+                  <div className="topCartItem">
+                    <img alt="" src={`https:${item.item.image}`}></img>
+                    <div className="infoRight">
+                      <li>{item.item.name}</li>
+                      <li>{item.item.size}</li>
+
+                      <div className="price">{`$${item.item.price}`}</div>
+                      {/* <div className="itemAmount">
+                        <img src={minus} alt=""></img>
+
+                        <div className="amount">
+                          {
+                            userCart.filter(
+                              (cart) => cart.item.name === item.item.name
+                            ).length
+                          }
+                        </div>
+                        <img alt="" src={plus}></img>
+                      </div> */}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() =>
+                      db.collection(`${user.email}`).doc(item.id).delete()
+                    }
+                  >
+                    REMOVE ITEM
+                  </button>
+                </div>
+              ))
+            )
+          ) : cart.length === 0 ? (
+            <div style={{ fontWeight: "200", marginTop: "10px" }}>
+              Your cart is currently empty.
+            </div>
+          ) : (
+            cart.map((item, i) => (
               <div key={i} className="cartItem">
                 <div className="topCartItem">
                   <img alt="" src={`https:${item.image}`}></img>
@@ -47,23 +109,38 @@ function Cart() {
                     <li>{item.size}</li>
 
                     <div className="price">{`$${item.price}`}</div>
-                    <div className="itemAmount">
+                    {/* <div className="itemAmount">
                       <img src={minus} alt=""></img>
 
                       <div className="amount">
-                        {user
-                          ? userCart.filter((cart) => cart.name === item.name)
-                              .lenth
-                          : cart.filter((cart) => cart.name === item.name)
-                              .length}
+                        {cart.filter((cart) => cart.name === item.name).length}
                       </div>
                       <img alt="" src={plus}></img>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
-                <button>REMOVE ITEM</button>
+                <button onClick={() => itemDelete(i)}>REMOVE ITEM</button>
               </div>
-            ))}
+            ))
+          )}
+        </div>
+        {user ? (
+          dataTotal ? (
+            <footer>
+              <div className="subtotal">{`SUBTOTAL: $${dataTotal}`}</div>
+              <button>CHECKOUT</button>
+            </footer>
+          ) : (
+            <div></div>
+          )
+        ) : total ? (
+          <footer>
+            <div className="subtotal">{`SUBTOTAL: $${total}`}</div>
+            <button>CHECKOUT</button>
+          </footer>
+        ) : (
+          <div></div>
+        )}
       </main>
     </div>
   );

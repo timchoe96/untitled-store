@@ -3,13 +3,12 @@ import "./styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setItem } from "../../actions/index.js";
 import { db } from "../../firebase.js";
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 function Item({ match }) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.items);
   const user = useSelector((state) => state.activeUser);
-  // console.log(user);
 
   let id = match.params.id;
   const [click, setClick] = useState("Choose a size");
@@ -39,6 +38,7 @@ function Item({ match }) {
         price: object.price,
         size: returnedSize,
         image: object.image[0].fields.file.url,
+        id: id,
       })
     );
   };

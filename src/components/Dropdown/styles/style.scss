@@ -2,16 +2,18 @@
   position: fixed;
   z-index: 420;
   top: 0;
-  height: 1%;
+  height: 10%;
   width: 100vw;
-
+  pointer-events: none;
   .mobileMenu {
+    display: none;
+    pointer-events: auto;
     overflow: scroll;
     color: white;
     position: absolute;
     top: 0;
     z-index: 40;
-    height: calc(100% * 100);
+    height: calc(100% * 10);
     width: 100%;
     background-color: black;
     transition: all ease-out 0.3s;
@@ -48,6 +50,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .positionHolder {
+    .mobileMenu {
+      display: block;
     }
   }
 }
