@@ -52,7 +52,7 @@ Homepage:
 
 Store: 
 
-![](images/store.png)
+![](images/shop.png)
 
 Login:
 
