@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# About
 
- Available Scripts
+This is a fully responsive E-commerce mock-up for my blog store. All items are not real products and are just placeholders. 
 
-In the project directory, you can run:
+# Technologies
 
-### `npm start`
+The technologies used to build this website include:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- HTML5
+- CSS3
+- SASS
+- REACT
+- REACT - ROUTER - DOM
+- REDUX
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# More info
 
-### `npm test`
+This website includes 4 main pages:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Home
+2. Store
+3. Login
+4. Cart
 
-### `npm run build`
+### Home
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The homepage features a repeating video ad that shows the brand logo. It also includes new arrivals to the store. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Store
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The store page has 4 subcategories:Tops, Bottoms, Accessories, and Home goods. All the products are dynamically rendered through the [Contentful](https://www.contentful.com) API. Some products have size categories that must be chosen before adding to the cart. 
 
-### `npm run eject`
+### Login
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Use the sample credentials below to test out the login feature or make your own account.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+username: test@gmail.com
+password: test123
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The store includes an authentication page which allows users to create accounts and have items saved to the cart, even after logging out and refreshing the page. 
+Authentication is handled through  [Google Firebase](https://firebase.google.com/docs/auth)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Cart
 
-## Learn More
+The cart section shows which items you have selected for checkout. It shows the subtotal cost of all your items and allows for the removal of items. When logged in, the cart items are saved and rendered from [Google Firebase](https://firebase.google.com/docs/firestore) Cloud Firestore, which is a backend service provided by Google. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Website Images
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Homepage:
 
-### Code Splitting
+![](images/Home.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Blog: 
 
-### Analyzing the Bundle Size
+![](images/blog.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Images: 
 
-### Making a Progressive Web App
+![](images/images.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
