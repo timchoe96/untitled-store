@@ -83,6 +83,7 @@
 .home .newArrivals .arrivalGrid .imageContainer .imageLabel {
   font-size: 14px;
   margin-top: 30px;
+  font-weight: 200;
 }
 
 @media only screen and (max-width: 1024px) {

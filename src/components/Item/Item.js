@@ -38,7 +38,6 @@ function Item({ match }) {
         price: object.price,
         size: returnedSize,
         image: object.image[0].fields.file.url,
-        id: id,
       })
     );
   };

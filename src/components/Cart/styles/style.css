@@ -78,15 +78,36 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .dimmedBackground .cart .cartItem .topCartItem .infoRight li {
   font-size: 14px;
   list-style: none;
+  margin-bottom: 5px;
 }
 
 .dimmedBackground .cart .cartItem .topCartItem .infoRight .price {
   font-size: 14px;
+  margin-left: auto;
+}
+
+.dimmedBackground .cart .cartItem .topCartItem .infoRight .add_minus {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.dimmedBackground .cart .cartItem .topCartItem .infoRight .add_minus img {
+  width: 15px;
+  padding: 2px;
+  height: auto;
 }
 
 .dimmedBackground .cart .cartItem .topCartItem .infoRight .itemAmount {
@@ -111,18 +132,29 @@
   margin: 20px 0;
   width: 100%;
   height: 30px;
+  color: black;
+  border: thin black solid;
+  background: none;
+  cursor: pointer;
+}
+
+.dimmedBackground .cart .cartItem button:hover {
   color: white;
-  border: none;
+  border: thin black solid;
   background: black;
 }
 
 .dimmedBackground footer {
   width: 100%;
   margin-top: 40px;
+  position: absolute;
+  padding: 0 10px;
+  bottom: 5px;
+  left: calc(50% - (100% / 2));
 }
 
 .dimmedBackground footer .subtotal {
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .dimmedBackground footer button {
@@ -130,8 +162,8 @@
   background: black;
   color: white;
   border: none;
-  height: 30px;
-  margin-top: 20px;
+  height: 50px;
+  margin-top: 15px;
 }
 
 @media only screen and (max-width: 450px) {
@@ -142,17 +174,17 @@
   .dimmedBackground footer {
     width: 100%;
     margin-top: 20px;
-  }
-  .dimmedBackground footer .subtotal {
-    font-weight: 400;
+    position: absolute;
+    padding: 0 10px;
+    bottom: 5px;
+    left: calc(50% - (100% / 2));
   }
   .dimmedBackground footer button {
     width: 100%;
     background: black;
     color: white;
     border: none;
-    height: 30px;
-    margin-top: 20px;
+    height: 40px;
   }
 }
 /*# sourceMappingURL=style.css.map */
