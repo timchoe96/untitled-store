@@ -29,7 +29,7 @@ function Cart() {
   const cartClose = () => {
     dispatch(
       cartStyles({
-        position: "-600px",
+        position: "-100vw",
         background: "rgba(0,0,0,0)",
         pointer: "none",
       })
@@ -87,7 +87,7 @@ function Cart() {
   const itemDelete = (i) => {
     let newArray = cartNew;
     newArray.splice(i, 1);
-    dispatch(deleteItem(newArray.flat()));
+    dispatch(deleteItem(newArray.flat().reverse()));
   };
 
   const itemDeleteUser = (i) => {
@@ -143,81 +143,77 @@ function Cart() {
           CLOSE
         </div>
         <h3>Shopping Cart</h3>
-        <div className="scroll">
-          {user ? (
-            // This is the cart for when you are logged in
-            userCart.length === 0 ? (
-              <div style={{ fontWeight: "200", marginTop: "10px" }}>
-                Your cart is currently empty.
-              </div>
-            ) : (
-              cartNewUser.reverse().map((item, i) => (
-                <div key={i} className="cartItem">
-                  <div className="topCartItem">
-                    <img alt="" src={`https:${item[0].item.image}`}></img>
-                    <div className="infoRight">
-                      <ul>
-                        <li>{item[0].item.name}</li>
-                        <li>{`Size: ${item[0].item.size}`}</li>
-                      </ul>
-                      <div className="add_minus">
-                        <img
-                          onClick={() => minusItemUser(item.slice(-1)[0])}
-                          src={minus}
-                          alt=""
-                        ></img>
-                        <div>{item.length}</div>
-                        <img
-                          onClick={() => plusItemUser(item.slice(-1)[0].item)}
-                          src={plus}
-                          alt=""
-                        ></img>
-                      </div>
-                      <div className="price">{`$${item[0].item.price}`}</div>
-                    </div>
-                  </div>
-                  <button onClick={() => itemDeleteUser(item)}>
-                    REMOVE ITEM
-                  </button>
-                </div>
-              ))
-            )
-          ) : // This is the cart for when you are not logged in
-          cartNew.length === 0 ? (
+
+        {user ? (
+          // This is the cart for when you are logged in
+          userCart.length === 0 ? (
             <div style={{ fontWeight: "200", marginTop: "10px" }}>
               Your cart is currently empty.
             </div>
           ) : (
-            cartNew.reverse().map((item, i) => (
+            cartNewUser.reverse().map((item, i) => (
               <div key={i} className="cartItem">
                 <div className="topCartItem">
-                  <img alt="" src={`https:${item[0].image}`}></img>
+                  <img alt="" src={`https:${item[0].item.image}`}></img>
                   <div className="infoRight">
                     <ul>
-                      <li>{item[0].name}</li>
-                      <li>{`Size: ${item[0].size}`}</li>
+                      <li>{item[0].item.name}</li>
+                      <li>{`Size: ${item[0].item.size}`}</li>
                     </ul>
                     <div className="add_minus">
                       <img
-                        onClick={() => minusItem(i)}
+                        onClick={() => minusItemUser(item.slice(-1)[0])}
                         src={minus}
                         alt=""
                       ></img>
                       <div>{item.length}</div>
                       <img
-                        onClick={() => plusItem(item[0])}
+                        onClick={() => plusItemUser(item.slice(-1)[0].item)}
                         src={plus}
                         alt=""
                       ></img>
                     </div>
-                    <div className="price">{`$${item[0].price}`}</div>
+                    <div className="price">{`$${item[0].item.price}`}</div>
                   </div>
                 </div>
-                <button onClick={() => itemDelete(i)}>REMOVE ITEM</button>
+                <button onClick={() => itemDeleteUser(item)}>
+                  REMOVE ITEM
+                </button>
               </div>
             ))
-          )}
-        </div>
+          )
+        ) : // This is the cart for when you are not logged in
+        cartNew.length === 0 ? (
+          <div style={{ fontWeight: "200", marginTop: "10px" }}>
+            Your cart is currently empty.
+          </div>
+        ) : (
+          cartNew.reverse().map((item, i) => (
+            <div key={i} className="cartItem">
+              <div className="topCartItem">
+                <img alt="" src={`https:${item[0].image}`}></img>
+                <div className="infoRight">
+                  <ul>
+                    <li>{item[0].name}</li>
+                    <li>{`Size: ${item[0].size}`}</li>
+                  </ul>
+                  <div className="add_minus">
+                    <img onClick={() => minusItem(i)} src={minus} alt=""></img>
+                    <div>{item.length}</div>
+                    <img
+                      onClick={() => plusItem(item[0])}
+                      src={plus}
+                      alt=""
+                    ></img>
+                  </div>
+                  <div className="price">{`$${item[0].price}`}</div>
+                </div>
+              </div>
+              <button onClick={() => itemDelete(i)}>REMOVE ITEM</button>
+            </div>
+          ))
+        )}
+
         {user ? (
           dataTotal ? (
             <footer>

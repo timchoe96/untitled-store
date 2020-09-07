@@ -29,12 +29,9 @@
       padding-bottom: 10px;
       font-weight: 400;
     }
-    .scroll {
-      height: 65%;
-      overflow: scroll;
-    }
+
     .cartItem {
-      margin-top: 20px;
+      margin-top: 10px;
       border-bottom: thin black solid;
       .topCartItem {
         font-weight: 200;
@@ -47,11 +44,10 @@
           align-self: center;
         }
         .infoRight {
-          margin-right: 20px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          align-items: flex-end;
+          width: 150px;
           li {
             font-size: 14px;
             list-style: none;
@@ -62,9 +58,10 @@
             margin-left: auto;
           }
           .add_minus {
-            width: 100%;
+            margin-left: auto;
+            width: 80px;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             img {
               width: 15px;
               padding: 2px;
@@ -86,28 +83,20 @@
       button {
         margin: 20px 0;
         width: 100%;
-        height: 30px;
+        height: 20px;
         color: black;
-        border: thin black solid;
+        border: none;
+        border: thin solid black;
         background: none;
         cursor: pointer;
-        &:hover {
-          color: white;
-          border: thin black solid;
-          background: black;
-        }
       }
     }
   }
   footer {
     width: 100%;
     margin-top: 40px;
-    position: absolute;
-    padding: 0 10px;
-    bottom: 5px;
-    left: calc(50% - (100% / 2));
     .subtotal {
-      font-weight: 200;
+      font-weight: 400;
     }
     button {
       width: 100%;
@@ -116,6 +105,7 @@
       border: none;
       height: 50px;
       margin-top: 15px;
+      margin-bottom: 20px;
     }
   }
 }
@@ -123,22 +113,52 @@
 @media only screen and (max-width: 450px) {
   .dimmedBackground {
     .cart {
-      width: 100vw;
-      padding: 0 10px;
+      width: 100%;
+      padding: 0 20px;
     }
     footer {
       width: 100%;
       margin-top: 20px;
-      position: absolute;
-      padding: 0 10px;
-      bottom: 5px;
-      left: calc(50% - (100% / 2));
       button {
         width: 100%;
         background: black;
         color: white;
         border: none;
         height: 40px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .dimmedBackground {
+    .cart {
+      .cartItem {
+        .topCartItem {
+          img {
+            width: 100px;
+          }
+          .infoRight {
+            width: 120px;
+            .add_minus {
+              margin-left: auto;
+              width: 80px;
+              display: flex;
+              justify-content: space-between;
+              img {
+                width: 12px;
+                padding: 2px;
+                height: auto;
+              }
+            }
+            li {
+              font-size: 12px;
+            }
+            .price {
+              font-size: 12px;
+            }
+          }
+        }
       }
     }
   }

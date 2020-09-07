@@ -143,9 +143,12 @@
     font-size: 10px;
     font-weight: 600;
   }
+  .home .newArrivals {
+    margin-top: 50px;
+  }
   .home .newArrivals .arrivalGrid {
-    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    -ms-grid-columns: (minmax(240px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 }
 /*# sourceMappingURL=style.css.map */

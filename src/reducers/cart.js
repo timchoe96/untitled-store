@@ -2,7 +2,7 @@ const cart = (
   state = {
     background: "rgba(0, 0, 0, 0)",
     pointer: "none",
-    position: "-600px",
+    position: "-100vw",
   },
   action
 ) => {
