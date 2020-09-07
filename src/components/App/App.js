@@ -45,7 +45,9 @@ function App() {
         .onSnapshot((snapshot) =>
           dispatch(
             setUserItem(
-              snapshot.docs.map((doc) => ({ id: doc.id, item: doc.data() }))
+              snapshot.docs
+                .map((doc) => ({ id: doc.id, item: doc.data() }))
+                .reverse()
             )
           )
         );

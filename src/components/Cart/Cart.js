@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { cartStyles } from "../../actions/index.js";
@@ -9,6 +9,7 @@ import { cartTotalData } from "../../actions/index.js";
 import minus from "./images/minus.png";
 import plus from "./images/plus.png";
 import { setItem } from "../../actions/index.js";
+import firebase from "firebase/app";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -39,22 +40,6 @@ function Cart() {
   // For not logged in users, the cart will be rendered with the 3 fuunctions below
 
   function setCart() {
-    // cart.reverse().sort(function (a, b) {
-    //   if (a.name < b.name) {
-    //     return 0;
-    //   } else if (a.name > b.name) {
-    //     return 0;
-    //   } else {
-    //     if (a.size < b.size) {
-    //       return -1;
-    //     } else if (a.size > b.size) {
-    //       return 1;
-    //     } else {
-    //       return 0;
-    //     }
-    //   }
-    // });
-
     cart.forEach(
       (item) =>
         !filteredCart.filter(
@@ -71,22 +56,6 @@ function Cart() {
   // end of local cart render
 
   function setCartUser() {
-    // userCart.reverse().sort(function (a, b) {
-    //   if (a.item.name < b.item.name) {
-    //     return 0;
-    //   } else if (a.item.name > b.item.name) {
-    //     return 0;
-    //   } else {
-    //     if (a.item.size < b.item.size) {
-    //       return -1;
-    //     } else if (a.item.size > b.item.size) {
-    //       return 1;
-    //     } else {
-    //       return 0;
-    //     }
-    //   }
-    // });
-
     userCart.forEach(
       (item) =>
         !filteredCartUser.filter(
@@ -121,6 +90,12 @@ function Cart() {
     dispatch(deleteItem(newArray.flat()));
   };
 
+  const itemDeleteUser = (i) => {
+    i.forEach((item) => {
+      db.collection(`${user.email}`).doc(item.id).delete();
+    });
+  };
+
   const plusItem = (i) => {
     dispatch(
       setItem({
@@ -135,9 +110,26 @@ function Cart() {
   const minusItem = (i) => {
     let newArray = cartNew;
     newArray[i].splice(0, 1);
-    dispatch(deleteItem(newArray.flat()));
-    console.log(newArray);
+    dispatch(deleteItem(newArray.flat().reverse()));
   };
+
+  // deleting and adding items when logged in
+
+  const plusItemUser = (item) => {
+    db.collection(`${user.email}`).add({
+      name: item.name,
+      price: item.price,
+      size: item.size,
+      image: item.image,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  };
+
+  const minusItemUser = (item) => {
+    db.collection(`${user.email}`).doc(item.id).delete();
+  };
+
+  // end of deleting and adding items when logged in
 
   user ? setCartUser() : setCart();
 
@@ -159,7 +151,7 @@ function Cart() {
                 Your cart is currently empty.
               </div>
             ) : (
-              cartNewUser.map((item, i) => (
+              cartNewUser.reverse().map((item, i) => (
                 <div key={i} className="cartItem">
                   <div className="topCartItem">
                     <img alt="" src={`https:${item[0].item.image}`}></img>
@@ -168,14 +160,23 @@ function Cart() {
                         <li>{item[0].item.name}</li>
                         <li>{`Size: ${item[0].item.size}`}</li>
                       </ul>
+                      <div className="add_minus">
+                        <img
+                          onClick={() => minusItemUser(item.slice(-1)[0])}
+                          src={minus}
+                          alt=""
+                        ></img>
+                        <div>{item.length}</div>
+                        <img
+                          onClick={() => plusItemUser(item.slice(-1)[0].item)}
+                          src={plus}
+                          alt=""
+                        ></img>
+                      </div>
                       <div className="price">{`$${item[0].item.price}`}</div>
                     </div>
                   </div>
-                  <button
-                    onClick={() =>
-                      db.collection(`${user.email}`).doc(item[0].id).delete()
-                    }
-                  >
+                  <button onClick={() => itemDeleteUser(item)}>
                     REMOVE ITEM
                   </button>
                 </div>
@@ -187,7 +188,7 @@ function Cart() {
               Your cart is currently empty.
             </div>
           ) : (
-            cartNew.map((item, i) => (
+            cartNew.reverse().map((item, i) => (
               <div key={i} className="cartItem">
                 <div className="topCartItem">
                   <img alt="" src={`https:${item[0].image}`}></img>

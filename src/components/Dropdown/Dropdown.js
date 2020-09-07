@@ -5,15 +5,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles/style.css";
 import Cart from "../Cart/Cart.js";
+import { auth } from "../../firebase.js";
 
 function Dropdown() {
   const dispatch = useDispatch();
   const height = useSelector((state) => state.setHeight);
   const position = useSelector((state) => state.position);
+  const user = useSelector((state) => state.activeUser);
 
   const clickClose = () => {
     dispatch(mobileMenu({ left: "-2000px", overflow: "auto" }));
     document.getElementsByTagName("html")[0].style.overflow = "scroll";
+  };
+
+  const signOut = () => {
+    auth.signOut();
   };
 
   return (
@@ -69,9 +75,18 @@ function Dropdown() {
           <Link to="/About" style={{ textDecoration: "none", color: "white" }}>
             <li onClick={() => clickClose()}>ABOUT</li>
           </Link>
-          <Link to="/Login" style={{ textDecoration: "none", color: "white" }}>
-            <li onClick={() => clickClose()}>LOGIN</li>
-          </Link>
+          {user ? (
+            <li style={{ color: "white", cursor: "pointer" }} onClick={signOut}>
+              LOGOUT
+            </li>
+          ) : (
+            <Link
+              to="/Login"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <li onClick={() => clickClose()}>LOGIN</li>
+            </Link>
+          )}
         </ul>
       </div>
       <Cart />
