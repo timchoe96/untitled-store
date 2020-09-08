@@ -2,13 +2,14 @@
   margin-bottom: 150px;
   text-align: center;
   padding: 0 80px;
-  .video {
+  .image {
     margin: 0 auto;
     margin-top: 80px;
     width: 90%;
     position: relative;
-    video {
+    img {
       width: 100%;
+      height: auto;
     }
     .description {
       width: 100%;
@@ -71,7 +72,7 @@
 @media only screen and (max-width: 1024px) {
   .home {
     padding: 0 50px;
-    .video {
+    .image {
       width: 100%;
       .description {
         ul {
@@ -98,7 +99,7 @@
 @media only screen and (max-width: 700px) {
   .home {
     padding: 0 50px;
-    .video {
+    .image {
       .description {
         ul {
           li {
@@ -126,7 +127,7 @@
 @media only screen and (max-width: 400px) {
   .home {
     padding: 0 20px;
-    .video {
+    .image {
       .description {
         ul {
           li {

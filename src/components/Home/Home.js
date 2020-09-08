@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/style.css";
-import clouds from "./videos/clouds.mp4";
+import clouds from "./images/clouds.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -9,11 +9,9 @@ function Home() {
 
   return (
     <div className="home">
-      {/* video */}
-      <div className="video">
-        <video autoPlay loop muted>
-          <source src={clouds} type="video/mp4"></source>
-        </video>
+      {/* image */}
+      <div className="image">
+        <img src={clouds} alt=""></img>
         <div className="description">
           <ul>
             <li>UNTITLED</li>
